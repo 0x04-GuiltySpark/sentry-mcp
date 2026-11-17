@@ -1,0 +1,46 @@
+# No host port is published. Attach your MCP client to the mcp network.
+# Configure .env, then run: docker compose -f docker-compose.sidecar.yml up -d
+services:
+  sentry-mcp:
+    image: ghcr.io/streaming-tech/sentry-mcp:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      SENTRY_HOST: ${SENTRY_HOST:?Set SENTRY_HOST in .env}
+      SENTRY_ORG_SLUG: ${SENTRY_ORG_SLUG:?Set SENTRY_ORG_SLUG in .env}
+      SENTRY_ACCESS_TOKEN: ${SENTRY_ACCESS_TOKEN:?Set SENTRY_ACCESS_TOKEN in .env}
+      SENTRY_PROJECT_SLUG: ${SENTRY_PROJECT_SLUG:-}
+      PORT: ${PORT:-7013}
+      EXPERIMENTAL_MODE: 'false'
+    networks:
+      - mcp
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:' + process.env.PORT + '/health', {signal: AbortSignal.timeout(5000)}).then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+  # Add your actual client service, retaining any other networks it needs:
+  # mcp-client:
+  #   image: your-client-image:your-pinned-version
+  #   networks:
+  #     - mcp
+  #   depends_on:
+  #     sentry-mcp:
+  #       condition: service_healthy
+  # Configure that client to use http://sentry-mcp:7013/mcp.
+
+networks:
+  mcp:

@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+
+contact_links:
+  # --
+  - name: Community Support & Questions (Discord)
+    url: https://streamingtech.co.nz/discord
+    about: Get help configuring the container, tokens and MCP clients.
+
+  # --
+  - name: Documentation
+    url: https://github.com/Streaming-Tech/sentry-mcp/blob/master/README.md
+    about: Read the setup instructions, permission tables and troubleshooting guide.

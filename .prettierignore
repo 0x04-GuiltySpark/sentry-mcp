@@ -1,0 +1,5 @@
+# Prettier owns Markdown and YAML; TypeScript uses Biome.
+**/*
+!**/
+!**/*.yml
+!**/*.md

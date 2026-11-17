@@ -1,0 +1,11 @@
+{
+  "version": "26.5.1",
+  "releaseSha": "91739d162d53d60fbf20711f0c72c6f170c61f93",
+  "capabilities": {
+    "eventsValidate": 404,
+    "organizationEvents": 200,
+    "issueEvents": 200,
+    "traceItemAttributes": 200,
+    "replays": 404
+  }
+}

@@ -1,0 +1,24 @@
+--- a/packages/mcp-core/src/server.ts
++++ b/packages/mcp-core/src/server.ts
+@@ -291,10 +291,12 @@
+   context,
+   experimentalMode = false,
+   tools: customTools,
++  buildInstructions = buildServerInstructions,
+ }: {
+   context: ServerContext;
+   experimentalMode?: boolean;
+   tools?: ToolRegistry;
++  buildInstructions?: typeof buildServerInstructions;
+ }): McpServer {
+   const contextWithModes: ServerContext = {
+     ...context,
+@@ -317,7 +319,7 @@
+     },
+     {
+       maxToolInputElements: MAX_TOOL_INPUT_ELEMENTS,
+-      instructions: buildServerInstructions(
++      instructions: buildInstructions(
+         new Set(registrations.map(({ name }) => name)),
+       ),
+     },

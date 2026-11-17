@@ -1,0 +1,10 @@
+{
+  "version": null,
+  "capabilities": {
+    "eventsValidate": null,
+    "organizationEvents": 200,
+    "issueEvents": 200,
+    "traceItemAttributes": null,
+    "replays": null
+  }
+}

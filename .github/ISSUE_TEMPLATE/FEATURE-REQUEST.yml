@@ -1,0 +1,53 @@
+name: Feature Request
+description: Suggest an idea or feature proposal for Streaming Tech Sentry MCP
+title: '[Feature]: '
+labels: ['type:feature-request']
+
+body:
+  # --
+  - type: markdown
+    attributes:
+      value: |
+        ### Feature Proposals
+        Thank you for helping improve Streaming Tech Sentry MCP! Please outline your proposal, rationale, and target use case below.
+
+        For informal discussions, brainstorming, or setup questions, please chat in our [Discord Community](https://streamingtech.co.nz/discord) first.
+
+  # --
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature proposal related to a specific limitation or problem? Please describe it clearly.
+
+    validations:
+      required: true
+
+  # --
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution or functionality you would like to see implemented.
+
+    validations:
+      required: true
+
+  # --
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Describe any alternative approaches or workarounds you have considered.
+
+    validations:
+      required: false
+
+  # --
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to ensure this feature has not already been requested.
+          required: true

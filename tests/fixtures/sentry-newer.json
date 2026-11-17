@@ -1,0 +1,10 @@
+{
+  "version": "26.6.0",
+  "capabilities": {
+    "eventsValidate": 200,
+    "organizationEvents": 200,
+    "issueEvents": 200,
+    "traceItemAttributes": 200,
+    "replays": 200
+  }
+}
